@@ -8,6 +8,27 @@ app.use(cors());
 
 const db = new sqlite3.Database("./database.db");
 
+app.get("/", (req, res) => {
+    res.send(`
+        <div style="font-family: Arial; text-align:center; margin-top:50px;">
+            <h1>📚 Portafolio de Tareas</h1>
+
+            <h2>Luis Humberto Rojas Montoya</h2>
+
+            <p>🚀 Servidor funcionando correctamente</p>
+            <p>Ingeniería en Software</p>
+
+            <hr>
+
+            <a 
+            href="/tareas" 
+            style="font-size:20px;">
+                Ver API de tareas
+            </a>
+        </div>
+    `);
+});
+
 app.get("/tareas", (req, res) => {
 
     db.all("SELECT * FROM tareas", [], (err, rows) => {
